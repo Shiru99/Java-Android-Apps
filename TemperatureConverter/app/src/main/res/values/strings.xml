@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Temperature Converter</string>
+    <string name="convert">Convert</string>
+    <string name="temperature_in_c">Temperature in °C</string>
+    <string name="temperature_in_f">Temperature in °F</string>
+    <string name="good_morning">Good Morning ☕🌄🛌</string>
+    <string name="fun_fact">Fun Fact</string>
+    <string name="at_40_both_celsius_fahrenheit_scales_have_the_same_numerical_valuetextview"><![CDATA[At -40°, both Celsius & Fahrenheit scales have the same numerical valueTextView]]></string>
+</resources>

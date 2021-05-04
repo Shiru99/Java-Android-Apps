@@ -5,13 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
-import android.text.Editable;
-import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 
-import java.time.Duration;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -22,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText tempInF;
     private  EditText tempInC;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

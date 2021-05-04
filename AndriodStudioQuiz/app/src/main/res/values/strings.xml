@@ -3,7 +3,7 @@
     <string name="button">Start</string>
     <string name="android_quiz">Android Quiz</string>
     <string name="java_quiz">Java Quiz</string>
-    <string name="not_available">Not Available</string>
+    <string name="not_available">Unavailable</string>
     <string name="dart_quiz">Dart Quiz</string>
     <string name="python_quiz">Python Quiz</string>
 </resources>

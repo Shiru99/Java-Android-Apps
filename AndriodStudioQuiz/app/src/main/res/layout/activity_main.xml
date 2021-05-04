@@ -4,15 +4,184 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/arrows"
     tools:context=".MainActivity">
 
-    <TextView
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView2"
+        android:layout_width="307dp"
+        android:layout_height="477dp"
+        android:scrollbarSize="1dp"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#1F263238"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="vertical"
+                android:paddingTop="5dp"
+                android:paddingBottom="15dp"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="307dp"
+                    android:layout_height="414dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/android_quiz"
+                    app:srcCompat="@drawable/android"
+                    tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/android_button"
+                    android:layout_width="159dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:background="#212B30"
+                    android:text="@string/button"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#1F263238"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="vertical"
+                android:paddingTop="5dp"
+                android:paddingBottom="15dp"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="307dp"
+                    android:layout_height="414dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/java_quiz"
+                    app:srcCompat="@drawable/java"
+                    tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/java_button"
+                    android:layout_width="159dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:background="#212B30"
+                    android:text="@string/not_available"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#1F263238"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="vertical"
+                android:paddingTop="5dp"
+                android:paddingBottom="15dp"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="307dp"
+                    android:layout_height="414dp"
+                    android:layout_weight="1"
+                    android:padding="25dp"
+                    android:contentDescription="@string/python_quiz"
+                    app:srcCompat="@drawable/python"
+                    tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/python_button"
+                    android:layout_width="159dp"
+                    android:layout_height="60dp"
+
+                    android:layout_weight="1"
+                    android:background="#212B30"
+                    android:text="@string/not_available"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#1F263238"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="vertical"
+                android:paddingTop="5dp"
+                android:paddingBottom="15dp"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="307dp"
+                    android:layout_height="414dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/dart_quiz"
+                    app:srcCompat="@drawable/dart"
+                    tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/dart_button"
+                    android:layout_width="159dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:background="#212B30"
+                    android:text="@string/not_available"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="359dp" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="78dp"
+        android:layout_height="169dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.151"
+        app:srcCompat="@drawable/monkey" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="413dp"
+        android:layout_height="211dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/students" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

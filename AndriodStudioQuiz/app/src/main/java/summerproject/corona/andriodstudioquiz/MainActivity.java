@@ -18,12 +18,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.d("AppLogs","App Started");
 
         NotAvailableJava = findViewById(R.id.java_button);
         NotAvailableJava.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("QuizRequest","Request for Java quiz");
+                Log.d("AppLogs","Request for Java quiz");
                 Toast.makeText(MainActivity.this, "Quiz not available", Toast.LENGTH_SHORT).show();
             }
         });
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         NotAvailablePython.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("QuizRequest","Request for Python quiz");
+                Log.d("AppLogs","Request for Python quiz");
                 Toast.makeText(MainActivity.this, "Quiz not available", Toast.LENGTH_SHORT).show();
             }
         });
@@ -41,18 +42,17 @@ public class MainActivity extends AppCompatActivity {
         NotAvailableDart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("QuizRequest","Request for Dart quiz");
+                Log.d("AppLogs","Request for Dart quiz");
                 Toast.makeText(MainActivity.this, "Quiz not available", Toast.LENGTH_SHORT).show();
             }
         });
 
 
         Start = findViewById(R.id.android_button);
-
         Start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("QuizRequest","Request for Android quiz");
+                Log.d("AppLogs","Request for Android quiz");
                 Toast.makeText(MainActivity.this, "Quiz Started", Toast.LENGTH_SHORT).show();
             }
         });

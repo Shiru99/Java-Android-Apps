@@ -2,6 +2,7 @@ package summerproject.corona.andriodstudioquiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,11 +15,27 @@ public class MainActivity extends AppCompatActivity {
     private Button NotAvailableJava;
     private Button NotAvailablePython;
     private Button NotAvailableDart;
+    public static  String EXTRA_QuizPage="summerproject.corona.codingquiz.key.quizpage"; // Unique
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d("AppLogs","App Started");
+
+        final Intent intent_QuizPage = new Intent(this,QuizPage.class);
+
+        Start = findViewById(R.id.android_button);
+        Start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("AppLogs","Request for Android quiz");
+                Toast.makeText(MainActivity.this, "All The Best", Toast.LENGTH_SHORT).show();
+                intent_QuizPage.putExtra(EXTRA_QuizPage,"Java");
+                startActivity(intent_QuizPage);
+
+            }
+        });
 
         NotAvailableJava = findViewById(R.id.java_button);
         NotAvailableJava.setOnClickListener(new View.OnClickListener() {
@@ -48,14 +65,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        Start = findViewById(R.id.android_button);
-        Start.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("AppLogs","Request for Android quiz");
-                Toast.makeText(MainActivity.this, "Quiz Started", Toast.LENGTH_SHORT).show();
-            }
-        });
+
     }
 
 

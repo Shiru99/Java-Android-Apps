@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android Studio Quiz</string>
+    <string name="app_name">Coding Quiz</string>
     <string name="button">Start</string>
     <string name="android_quiz">Android Quiz</string>
     <string name="java_quiz">Java Quiz</string>

@@ -6,4 +6,6 @@
     <string name="not_available">Unavailable</string>
     <string name="dart_quiz">Dart Quiz</string>
     <string name="python_quiz">Python Quiz</string>
+    <string name="subject">subject</string>
+    <string name="time">10 min, 00 sec</string>
 </resources>

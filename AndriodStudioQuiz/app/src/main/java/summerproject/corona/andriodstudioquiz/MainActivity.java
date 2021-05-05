@@ -25,26 +25,27 @@ public class MainActivity extends AppCompatActivity {
 
         final Intent intent_QuizPage = new Intent(this,QuizPage.class);
 
-        Start = findViewById(R.id.android_button);
-        Start.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("AppLogs","Request for Android quiz");
-                Toast.makeText(MainActivity.this, "All The Best", Toast.LENGTH_SHORT).show();
-                intent_QuizPage.putExtra(EXTRA_QuizPage,"Java");
-                startActivity(intent_QuizPage);
-
-            }
-        });
-
         NotAvailableJava = findViewById(R.id.java_button);
         NotAvailableJava.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("AppLogs","Request for Java quiz");
+                Toast.makeText(MainActivity.this, "All The Best", Toast.LENGTH_SHORT).show();
+                intent_QuizPage.putExtra(EXTRA_QuizPage,"Java");
+                startActivity(intent_QuizPage);
+            }
+        });
+
+        Start = findViewById(R.id.android_button);
+        Start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("AppLogs","Request for Android quiz");
                 Toast.makeText(MainActivity.this, "Quiz not available", Toast.LENGTH_SHORT).show();
             }
         });
+
+
 
         NotAvailablePython = findViewById(R.id.python_button);
         NotAvailablePython.setOnClickListener(new View.OnClickListener() {

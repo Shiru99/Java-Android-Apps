@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.TextView;
 
 import java.util.concurrent.TimeUnit;
@@ -13,6 +14,7 @@ public class QuizPage extends AppCompatActivity {
 
     private TextView title;
     private TextView countdown;
+    private TextView question;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,9 @@ public class QuizPage extends AppCompatActivity {
                 countdown.setText("TimeOut");
             }
         }.start();
+
+        question = findViewById(R.id.question);
+        question.setMovementMethod(new ScrollingMovementMethod());
 
 
 

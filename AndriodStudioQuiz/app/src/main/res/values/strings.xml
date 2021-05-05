@@ -8,4 +8,8 @@
     <string name="python_quiz">Python Quiz</string>
     <string name="subject">subject</string>
     <string name="time">10 min, 00 sec</string>
+    <string name="scorecard">ScoreCard</string>
+    <string name="falseValue">False</string>
+    <string name="trueValue">True</string>
+    <string name="example">Fun Fact : Programs written in Java have a reputation for being slower and requiring more memory than those written in C++ .[47][48] However, Java programs\' execution speed improved significantly with the introduction of just-in-time compilation in 1997/1998 for Java 1.1,[49] the addition of language features supporting better code analysis (such as inner classes, the StringBuilder class, optional assertions, etc.), and optimizations in the Java virtual machine, such as HotSpot becoming Sun\'s default JVM in 2000. With Java 1.5, the performance was improved with the addition of the java.util.concurrent package, including lock free implementations of the ConcurrentMaps and other multi-core collections, and it was improved further with Java 1.6.</string>
 </resources>

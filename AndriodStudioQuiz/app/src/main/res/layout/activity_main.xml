@@ -38,16 +38,16 @@
                 tools:ignore="UselessParent">
 
                 <ImageView
-                    android:id="@+id/imageView1"
+                    android:id="@+id/imageView2"
                     android:layout_width="307dp"
                     android:layout_height="414dp"
                     android:layout_weight="1"
-                    android:contentDescription="@string/android_quiz"
-                    app:srcCompat="@drawable/android"
+                    android:contentDescription="@string/java_quiz"
+                    app:srcCompat="@drawable/java"
                     tools:ignore="NestedWeights" />
 
                 <Button
-                    android:id="@+id/android_button"
+                    android:id="@+id/java_button"
                     android:layout_width="159dp"
                     android:layout_height="60dp"
                     android:layout_weight="1"
@@ -69,24 +69,26 @@
                 tools:ignore="UselessParent">
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/imageView1"
                     android:layout_width="307dp"
                     android:layout_height="414dp"
                     android:layout_weight="1"
-                    android:contentDescription="@string/java_quiz"
-                    app:srcCompat="@drawable/java"
+                    android:contentDescription="@string/android_quiz"
+                    app:srcCompat="@drawable/android"
                     tools:ignore="NestedWeights" />
 
                 <Button
-                    android:id="@+id/java_button"
+                    android:id="@+id/android_button"
+                    android:text="@string/not_available"
                     android:layout_width="159dp"
                     android:layout_height="60dp"
                     android:layout_weight="1"
                     android:background="#212B30"
-                    android:text="@string/not_available"
                     android:textColor="#FFFFFF"
                     android:textSize="18sp" />
             </LinearLayout>
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"

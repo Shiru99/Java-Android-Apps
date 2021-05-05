@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button Start;
-    private Button NotAvailableJava;
+    private Button AvailableJava;
+    private Button NotAvailableAndroid;
     private Button NotAvailablePython;
     private Button NotAvailableDart;
     public static  String EXTRA_QuizPage="summerproject.corona.codingquiz.key.quizpage"; // Unique
@@ -25,19 +25,19 @@ public class MainActivity extends AppCompatActivity {
 
         final Intent intent_QuizPage = new Intent(this,QuizPage.class);
 
-        NotAvailableJava = findViewById(R.id.java_button);
-        NotAvailableJava.setOnClickListener(new View.OnClickListener() {
+        AvailableJava = findViewById(R.id.java_button);
+        AvailableJava.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("AppLogs","Request for Java quiz");
+                Log.d("AppLogs","Request for Java quiz page");
                 Toast.makeText(MainActivity.this, "All The Best", Toast.LENGTH_SHORT).show();
                 intent_QuizPage.putExtra(EXTRA_QuizPage,"Java");
                 startActivity(intent_QuizPage);
             }
         });
 
-        Start = findViewById(R.id.android_button);
-        Start.setOnClickListener(new View.OnClickListener() {
+        NotAvailableAndroid = findViewById(R.id.android_button);
+        NotAvailableAndroid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("AppLogs","Request for Android quiz");

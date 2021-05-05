@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".QuizScore"
-            android:label="Quiz Scorecard"
+            android:label="Quiz ScoreCard"
             android:parentActivityName=".MainActivity">
         </activity>
         <activity

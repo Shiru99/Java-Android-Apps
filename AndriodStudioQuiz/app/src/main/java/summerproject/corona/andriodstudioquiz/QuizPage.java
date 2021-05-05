@@ -19,7 +19,14 @@ public class QuizPage extends AppCompatActivity {
     private TextView title;
     private TextView countdown;
     private TextView question;
-    public Button ScoreCard;
+
+    public Button buttonFalse;
+    public Button buttonTrue;
+    public Button scorecard;
+    private String[] Questions;
+    private boolean[] Answers;
+    private int score;
+    private String scoreText="0/0";
     public static  String EXTRA_QuizScore="summerproject.corona.codingquiz.key.quizscore"; // Unique
 
     @Override
@@ -35,6 +42,32 @@ public class QuizPage extends AppCompatActivity {
         title = findViewById(R.id.title);
         title.setText(subject);
 
+        if(title.toString().toLowerCase().equals("java")){
+            Questions = new String[]{"Q.1", "Q.2", "Q.3", "Q.4", "Q.5", "Q.6"};
+            Answers = new boolean[]{true,false,true,false,true,true};
+            score = 0;
+        }
+
+
+        buttonFalse = findViewById(R.id.buttonFalse);
+        buttonTrue = findViewById(R.id.buttonTrue);
+
+        buttonTrue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(QuizPage.this, "Answer Recorded : True", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        buttonFalse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(QuizPage.this, "Answer Recorded : False", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
         countdown = (TextView) findViewById( R.id.countdown );
         new CountDownTimer(600000, 1000)  // milli seconds
         {
@@ -49,6 +82,7 @@ public class QuizPage extends AppCompatActivity {
                 );
             }
 
+            @SuppressLint("SetTextI18n")
             public void onFinish() {
                 countdown.setText("TimeOut");
             }
@@ -63,13 +97,13 @@ public class QuizPage extends AppCompatActivity {
 
         final Intent intent_QuizScore = new Intent(this,QuizScore.class);
 
-        ScoreCard = findViewById(R.id.scorecard);
-        ScoreCard.setOnClickListener(new View.OnClickListener() {
+        scorecard = findViewById(R.id.scorecard);
+        scorecard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("AppLogs","Request for Score");
                 //  Toast.makeText(QuizPage.this, "Score", Toast.LENGTH_SHORT).show();
-                intent_QuizScore.putExtra(EXTRA_QuizScore,"0");
+                intent_QuizScore.putExtra(EXTRA_QuizScore,scoreText);
                 startActivity(intent_QuizScore);
             }
         });

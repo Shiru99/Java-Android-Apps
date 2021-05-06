@@ -41,7 +41,7 @@ public class QuizScore extends AppCompatActivity {
     public void composeMmsMessage(String message) {
         Log.d("AppLogs", "Sharing Via MMS message");
         Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setData(Uri.parse("smsto:")); // This ensures only SMS apps respond
+        intent.setType("text/plain");
         intent.putExtra("sms_body", message);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
@@ -49,6 +49,19 @@ public class QuizScore extends AppCompatActivity {
             Toast.makeText(QuizScore.this, "No Suitable Application Available On This Device", Toast.LENGTH_SHORT).show();
         }
     }
+
+//    @SuppressLint("QueryPermissionsNeeded")
+//    public void composeMmsMessage(String message) {
+//        Log.d("AppLogs", "Sharing Via MMS message");
+//        Intent intent = new Intent(Intent.ACTION_SEND);
+//        intent.setData(Uri.parse("smsto:")); // This ensures only SMS apps respond
+//        intent.putExtra("sms_body", message);
+//        if (intent.resolveActivity(getPackageManager()) != null) {
+//            startActivity(intent);
+//        } else {
+//            Toast.makeText(QuizScore.this, "No Suitable Application Available On This Device", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

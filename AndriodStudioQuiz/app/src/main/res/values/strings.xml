@@ -12,4 +12,6 @@
     <string name="falseValue">False</string>
     <string name="trueValue">True</string>
     <string name="example">Fun Fact : Java was called Oak at the beginning</string>
+    <string name="score">Score</string>
+    <string name="start">Start</string>
 </resources>

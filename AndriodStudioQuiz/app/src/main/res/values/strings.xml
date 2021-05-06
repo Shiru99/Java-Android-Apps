@@ -14,4 +14,5 @@
     <string name="example">Fun Fact : Java was called Oak at the beginning</string>
     <string name="score">Score</string>
     <string name="start">Start</string>
+    <string name="ShareContentDescription">Get Your Detailed Quiz Analysis</string>
 </resources>

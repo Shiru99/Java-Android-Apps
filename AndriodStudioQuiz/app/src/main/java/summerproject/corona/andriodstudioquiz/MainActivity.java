@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button AvailableJava;
     private Button NotAvailableAndroid;
-    private Button NotAvailablePython;
+    private Button AvailablePython;
     private Button NotAvailableDart;
     public static  String EXTRA_QuizPage="summerproject.corona.codingquiz.key.quizpage"; // Unique
 
@@ -36,25 +36,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        AvailablePython = findViewById(R.id.python_button);
+        AvailablePython.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("AppLogs","Request for Python quiz");
+                Toast.makeText(MainActivity.this, "All The Best", Toast.LENGTH_SHORT).show();
+                intent_QuizPage.putExtra(EXTRA_QuizPage,"Python");
+                startActivity(intent_QuizPage);
+            }
+        });
+
         NotAvailableAndroid = findViewById(R.id.android_button);
         NotAvailableAndroid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("AppLogs","Request for Android quiz");
                 Toast.makeText(MainActivity.this, "Quiz not available", Toast.LENGTH_SHORT).show();
+                // intent_QuizPage.putExtra(EXTRA_QuizPage,"Android");
+                // startActivity(intent_QuizPage);
             }
         });
 
-
-
-        NotAvailablePython = findViewById(R.id.python_button);
-        NotAvailablePython.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("AppLogs","Request for Python quiz");
-                Toast.makeText(MainActivity.this, "Quiz not available", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         NotAvailableDart = findViewById(R.id.dart_button);
         NotAvailableDart.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("AppLogs","Request for Dart quiz");
                 Toast.makeText(MainActivity.this, "Quiz not available", Toast.LENGTH_SHORT).show();
+                // intent_QuizPage.putExtra(EXTRA_QuizPage,"Dart");
+                // startActivity(intent_QuizPage);
             }
         });
 

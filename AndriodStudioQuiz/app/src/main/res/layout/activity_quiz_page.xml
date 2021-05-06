@@ -44,6 +44,7 @@
         android:scrollbarSize="0dp"
         android:scrollbars="vertical"
         android:text="@string/example"
+        android:textColor="#263238"
         android:textSize="21sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

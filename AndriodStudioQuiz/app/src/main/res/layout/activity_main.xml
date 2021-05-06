@@ -52,10 +52,44 @@
                     android:layout_height="60dp"
                     android:layout_weight="1"
                     android:background="#212B30"
-                    android:text="@string/button"
+                    android:text="@string/start"
                     android:textColor="#FFFFFF"
                     android:textSize="18sp" />
             </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#1F263238"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="vertical"
+                android:paddingTop="5dp"
+                android:paddingBottom="15dp"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="307dp"
+                    android:layout_height="414dp"
+                    android:layout_weight="1"
+                    android:padding="25dp"
+                    android:contentDescription="@string/python_quiz"
+                    app:srcCompat="@drawable/python"
+                    tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/python_button"
+                    android:layout_width="159dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:background="#212B30"
+                    android:text="@string/start"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -90,38 +124,6 @@
 
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="#1F263238"
-                android:gravity="center_horizontal|center_vertical"
-                android:orientation="vertical"
-                android:paddingTop="5dp"
-                android:paddingBottom="15dp"
-                tools:ignore="UselessParent">
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="307dp"
-                    android:layout_height="414dp"
-                    android:layout_weight="1"
-                    android:padding="25dp"
-                    android:contentDescription="@string/python_quiz"
-                    app:srcCompat="@drawable/python"
-                    tools:ignore="NestedWeights" />
-
-                <Button
-                    android:id="@+id/python_button"
-                    android:layout_width="159dp"
-                    android:layout_height="60dp"
-
-                    android:layout_weight="1"
-                    android:background="#212B30"
-                    android:text="@string/not_available"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp" />
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_200"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="205dp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="55dp"
+        android:background="@color/dark_499"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/musicbutton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_weight="1"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="@string/music"
+            android:textColor="@color/orange"
+            android:textSize="16sp"
+            app:iconPadding="0dp" />
+
+        <Button
+            android:id="@+id/videobutton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="204dp"
+            android:layout_height="55dp"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="@string/video"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:iconPadding="0dp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/shufflebutton"
+        style="@android:style/Widget.DeviceDefault.Button.Borderless"
+        android:layout_width="fill_parent"
+        android:layout_height="51dp"
+        android:layout_weight="1"
+        android:drawableLeft="@drawable/shuffle"
+        android:gravity="center_vertical"
+        android:text="@string/shuffle"
+        android:textColor="@color/orange"
+        android:textSize="16sp"
+        app:backgroundTint="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="409dp"
+        android:layout_height="623dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shufflebutton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

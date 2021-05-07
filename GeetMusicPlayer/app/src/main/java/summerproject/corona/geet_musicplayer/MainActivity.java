@@ -32,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
     private Button videobutton;
     private Button shufflebutton;
 
+    private Song[] songPlayList;
+    private Video[] videoPlayList;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,27 +58,28 @@ public class MainActivity extends AppCompatActivity {
 
                         MediaMetadataRetriever metaRetriver = new MediaMetadataRetriever();
 
-                        ArrayList<File> Songs = fetchVideos(Environment.getExternalStorageDirectory());
+                        ArrayList<File> Songs = fetchMusic(Environment.getExternalStorageDirectory());
 
-                        String[] songNames = new String[Songs.size()];
-                        String[] songArtist = new String[Songs.size()];
-                        String[] songAlbum = new String[Songs.size()];
-                        //
+                        songPlayList = new Song[Songs.size()];
+
                         for (int i = 0; i < Songs.size(); i++) {
+                            Song temp = new Song();
+                            songPlayList[i]=temp;
                             try {
                                 metaRetriver.setDataSource(String.valueOf(Songs.get(i)));
-                                songAlbum[i] = metaRetriver.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM);
-                                songArtist[i] = metaRetriver
-                                        .extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
+                                songPlayList[i].setSongAlbum(metaRetriver.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM));
+
+                                songPlayList[i].setSongArtist(metaRetriver
+                                        .extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST));
 
                             } catch (Exception e) {
-                                songAlbum[i] = "Unknown Album";
-                                songArtist[i] = "Unknown Artist";
+                                songPlayList[i].setSongAlbum("Unknown Album");
+                                songPlayList[i].setSongArtist("Unknown Artist");
                             }
-                            songNames[i] = Songs.get(i).getName().replace(".mp3", "");
+                            songPlayList[i].setSongNames(Songs.get(i).getName().replace(".mp3", ""));
                         }
 
-                        Log.d("AppLogs", "Fetched Songs Done :" + Songs.size());
+                        Log.d("AppLogs", "Fetched Songs :" + songPlayList.length);
 
                     }
 
@@ -98,7 +103,8 @@ public class MainActivity extends AppCompatActivity {
                 // Toast.makeText(MainActivity.this, "All The Best", Toast.LENGTH_SHORT).show();
                 musicbutton.setTextColor(Color.parseColor("#FF8219"));
                 videobutton.setTextColor(Color.parseColor("#FFFFFF"));
-                shufflebutton.setVisibility(View.VISIBLE);
+//                shufflebutton.setVisibility(View.VISIBLE);
+                Log.d("AppLogs", "Fetched Songs :" + songPlayList.length);
 
             }
         });
@@ -111,7 +117,35 @@ public class MainActivity extends AppCompatActivity {
                 // Toast.makeText(MainActivity.this, "All The Best", Toast.LENGTH_SHORT).show();
                 videobutton.setTextColor(Color.parseColor("#FF8219"));
                 musicbutton.setTextColor(Color.parseColor("#FFFFFF"));
-                shufflebutton.setVisibility(View.GONE);
+//                shufflebutton.setVisibility(View.GONE);
+
+                if(videoPlayList==null){
+                    MediaMetadataRetriever metaRetriver = new MediaMetadataRetriever();
+
+                    ArrayList<File> Videos = fetchVideos(Environment.getExternalStorageDirectory());
+
+                    videoPlayList = new Video[Videos.size()];
+
+                    for (int i = 0; i < Videos.size(); i++) {
+                        Video temp = new Video();
+                        videoPlayList[i]=temp;
+                        try {
+                            metaRetriver.setDataSource(String.valueOf(Videos.get(i)));
+                            videoPlayList[i].setVideoAlbum(metaRetriver.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM));
+
+                            videoPlayList[i].setVideoArtist(metaRetriver
+                                    .extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST));
+
+                        } catch (Exception e) {
+                            videoPlayList[i].setVideoAlbum("Unknown Album");
+                            videoPlayList[i].setVideoArtist("Unknown Artist");
+                        }
+                        videoPlayList[i].setVideoNames(Videos.get(i).getName().replace(".mp3", ""));
+                    }
+                }
+
+                Log.d("AppLogs", "Fetched Videos :" + videoPlayList.length);
+
             }
         });
 
@@ -156,8 +190,7 @@ public class MainActivity extends AppCompatActivity {
             for (File eachFile : files) {
                 if (!eachFile.isHidden() && eachFile.isDirectory()) {
                     videoList.addAll(fetchVideos(eachFile));
-                } else if ((eachFile.getName().endsWith(".mp4") || eachFile.getName().endsWith(".mkv"))
-                        && !eachFile.getName().startsWith(".")) {
+                } else if (eachFile.getName().endsWith(".mp4") && !eachFile.getName().startsWith(".")) {
                     videoList.add(eachFile);
                 }
             }

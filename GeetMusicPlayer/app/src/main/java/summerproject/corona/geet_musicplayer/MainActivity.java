@@ -11,7 +11,10 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.karumi.dexter.Dexter;
@@ -31,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private Button musicbutton;
     private Button videobutton;
     private Button shufflebutton;
+    private ListView listView ;
 
     private Song[] songPlayList;
     private Video[] videoPlayList;
@@ -49,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         musicbutton = findViewById(R.id.musicbutton);
         videobutton = findViewById(R.id.videobutton);
         shufflebutton = findViewById(R.id.shufflebutton);
+        listView = findViewById(R.id.listView);
 
         Log.d("AppLogs", "App asking for permission");
         Dexter.withContext(this).withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -145,6 +150,20 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 Log.d("AppLogs", "Fetched Videos :" + videoPlayList.length);
+
+                ArrayAdapter<Video> adapter = new ArrayAdapter<Video>(MainActivity.this, android.R.layout.simple_list_item_1, videoPlayList);
+                listView.setAdapter(adapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                        Intent intent = new Intent(MainActivity.this, PlaySong.class);
+//                        String currentSong = listView.getItemAtPosition(position).toString();
+//                        intent.putExtra("songList", mySongs);
+//                        intent.putExtra("currentSong", currentSong);
+//                        intent.putExtra("position", position);
+//                        startActivity(intent);
+                    }
+                });
 
             }
         });

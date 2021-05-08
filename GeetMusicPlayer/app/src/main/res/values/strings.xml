@@ -3,4 +3,8 @@
     <string name="music">Music</string>
     <string name="video">Video</string>
     <string name="shuffle">Shuffle All</string>
+    <string name="song_name">Song Name</string>
+    <string name="song_description">Song Description</string>
+    <string name="songsettings">Song Settings</string>
+    <string name="justicon">Just Icon</string>
 </resources>

@@ -1,12 +1,15 @@
 package summerproject.corona.geet_musicplayer;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaMetadataRetriever;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -58,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
         Log.d("AppLogs", "App asking for permission");
         Dexter.withContext(this).withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                 .withListener(new PermissionListener() {
+                    @SuppressLint("UseCompatLoadingForDrawables")
+                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                     @Override
                     public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
 
@@ -72,19 +77,46 @@ public class MainActivity extends AppCompatActivity {
                             songPlayList[i]=temp;
                             try {
                                 metaRetriver.setDataSource(String.valueOf(Songs.get(i)));
+
                                 songPlayList[i].setSongAlbum(metaRetriver.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM));
+
+                                if(songPlayList[i].getSongAlbum()==null){
+                                    songPlayList[i].setSongAlbum("Unknown Album");
+                                }
 
                                 songPlayList[i].setSongArtist(metaRetriver
                                         .extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST));
+                                if(songPlayList[i].getSongArtist()==null){
+                                    songPlayList[i].setSongArtist("Unknown Artist");
+                                }
 
                             } catch (Exception e) {
                                 songPlayList[i].setSongAlbum("Unknown Album");
                                 songPlayList[i].setSongArtist("Unknown Artist");
                             }
+
                             songPlayList[i].setSongNames(Songs.get(i).getName().replace(".mp3", ""));
+
+//                            Log.d("AppLogs", "" + songPlayList[i].getSongNames()+" "+songPlayList[i].getSongArtist()+" "+songPlayList[i].getSongAlbum());
                         }
 
                         Log.d("AppLogs", "Fetched Songs :" + songPlayList.length);
+
+                        CustomAdapter adapter = new CustomAdapter(MainActivity.this, R.layout.custom_listview_layout, songPlayList);
+                        listView.setAdapter(adapter);
+                        listView.setDivider(getDrawable(R.drawable.divider));
+//                        listView.addItemDecoration(new DividerItemDecoration(listView.getContext(), DividerItemDecoration.VERTICAL));
+//                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                            @Override
+//                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                                Intent intent = new Intent(MainActivity.this, PlaySong.class);
+//                                String currentSong = listView.getItemAtPosition(position).toString();
+//                                intent.putExtra("songList", mySongs);
+//                                intent.putExtra("currentSong", currentSong);
+//                                intent.putExtra("position", position);
+//                                startActivity(intent);
+//                            }
+//                        });
 
                     }
 
@@ -151,19 +183,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.d("AppLogs", "Fetched Videos :" + videoPlayList.length);
 
-                ArrayAdapter<Video> adapter = new ArrayAdapter<Video>(MainActivity.this, android.R.layout.simple_list_item_1, videoPlayList);
-                listView.setAdapter(adapter);
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                        Intent intent = new Intent(MainActivity.this, PlaySong.class);
-//                        String currentSong = listView.getItemAtPosition(position).toString();
-//                        intent.putExtra("songList", mySongs);
-//                        intent.putExtra("currentSong", currentSong);
-//                        intent.putExtra("position", position);
-//                        startActivity(intent);
-                    }
-                });
+
 
             }
         });

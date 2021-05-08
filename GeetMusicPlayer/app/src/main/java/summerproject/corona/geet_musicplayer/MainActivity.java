@@ -29,6 +29,7 @@ import com.karumi.dexter.listener.single.PermissionListener;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private Button videobutton;
     private Button shufflebutton;
     private ListView listView;
-    
+    private boolean toggle = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,8 +116,11 @@ public class MainActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @SuppressLint("ResourceAsColor")
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
+
                 Log.d("AppLogs", "Request for Music");
+                toggle = true;
                 musicbutton.setTextColor(Color.parseColor("#FF8219"));
                 videobutton.setTextColor(Color.parseColor("#FFFFFF"));
                 // shufflebutton.setVisibility(View.VISIBLE);
@@ -135,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("AppLogs", "Request for Video");
-                // Toast.makeText(MainActivity.this, "All The Best", Toast.LENGTH_SHORT).show();
+                toggle = false;
                 videobutton.setTextColor(Color.parseColor("#FF8219"));
                 musicbutton.setTextColor(Color.parseColor("#FFFFFF"));
                 // shufflebutton.setVisibility(View.GONE);
@@ -182,8 +186,27 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("AppLogs", "Request for Shuffle Music");
                 Toast.makeText(MainActivity.this, "Enjoy!", Toast.LENGTH_SHORT).show();
-                musicbutton.setTextColor(Color.parseColor("#FF8219"));
-                videobutton.setTextColor(Color.parseColor("#FFFFFF"));
+                Random rand = new Random();
+                if(toggle){
+                    int totalSongs = Song.songPlayList.length;
+                    int position = rand.nextInt(totalSongs) ;
+
+                    Log.d("AppLogs", "Playing Song : "+position+" - "+Song.songPlayList[position].getSongNames());
+                    final Intent intent_MusicPlayer = new Intent(MainActivity.this, MusicPlayer.class);
+                    intent_MusicPlayer.putExtra("position", position);
+                    startActivity(intent_MusicPlayer);
+
+                }else{
+                    int totalVideos = Video.videoPlayList.length;
+                    int position = rand.nextInt(totalVideos) ;
+
+                    Log.d("AppLogs", "Playing video : "+position+" - "+Video.videoPlayList[position].getVideoNames());
+                    final Intent intent_VideoPlayer = new Intent(MainActivity.this, VideoPlayer.class);
+                    intent_VideoPlayer.putExtra("position", position);
+                    startActivity(intent_VideoPlayer);
+                }
+
+
             }
         });
 

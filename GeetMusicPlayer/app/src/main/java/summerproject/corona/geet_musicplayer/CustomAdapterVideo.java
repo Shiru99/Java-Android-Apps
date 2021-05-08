@@ -22,7 +22,6 @@ public class CustomAdapterVideo extends ArrayAdapter<Video> {
         super(context, resource, videoPlayList);
 
         this.context = context;
-        Video.videoPlayList = videoPlayList;
     }
 
     public Video getItem(int position) {

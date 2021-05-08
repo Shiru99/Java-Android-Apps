@@ -21,7 +21,6 @@ public class CustomAdapter extends ArrayAdapter<Song> {
         super(context, resource, songPlayList);
 
         this.context = context;
-        Song.songPlayList = songPlayList;
     }
 
     public Song getItem(int position) {

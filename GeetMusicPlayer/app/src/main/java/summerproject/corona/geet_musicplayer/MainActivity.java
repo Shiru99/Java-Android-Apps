@@ -32,15 +32,11 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static String EXTRA_MusicPlayer = "summerproject.corona.geet_musicplayer.extra.musicplayer"; // Unique
-    public static String EXTRA_VideoPlayer = "summerproject.corona.geet_musicplayer.extra.videoplayer"; // Unique
     private Button musicbutton;
     private Button videobutton;
     private Button shufflebutton;
     private ListView listView;
-
-    private Song[] songPlayList;
-    private Video[] videoPlayList;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,39 +62,39 @@ public class MainActivity extends AppCompatActivity {
 
                         ArrayList<File> Songs = fetchMusic(Environment.getExternalStorageDirectory());
 
-                        songPlayList = new Song[Songs.size()];
+                        Song.songPlayList = new Song[Songs.size()];
 
                         for (int i = 0; i < Songs.size(); i++) {
                             Song temp = new Song();
-                            songPlayList[i] = temp;
+                            Song.songPlayList[i] = temp;
                             try {
                                 metaRetriver.setDataSource(String.valueOf(Songs.get(i)));
 
-                                songPlayList[i].setSongAlbum(
+                                Song.songPlayList[i].setSongAlbum(
                                         metaRetriver.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM));
 
-                                if (songPlayList[i].getSongAlbum() == null) {
-                                    songPlayList[i].setSongAlbum("Unknown Album");
+                                if (Song.songPlayList[i].getSongAlbum() == null) {
+                                    Song.songPlayList[i].setSongAlbum("Unknown Album");
                                 }
 
-                                songPlayList[i].setSongArtist(
+                                Song.songPlayList[i].setSongArtist(
                                         metaRetriver.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST));
-                                if (songPlayList[i].getSongArtist() == null) {
-                                    songPlayList[i].setSongArtist("Unknown Artist");
+                                if (Song.songPlayList[i].getSongArtist() == null) {
+                                    Song.songPlayList[i].setSongArtist("Unknown Artist");
                                 }
 
                             } catch (Exception e) {
-                                songPlayList[i].setSongAlbum("Unknown Album");
-                                songPlayList[i].setSongArtist("Unknown Artist");
+                                Song.songPlayList[i].setSongAlbum("Unknown Album");
+                                Song.songPlayList[i].setSongArtist("Unknown Artist");
                             }
 
-                            songPlayList[i].setSongNames(Songs.get(i).getName().replace(".mp3", ""));
+                            Song.songPlayList[i].setSongNames(Songs.get(i).getName().replace(".mp3", ""));
                         }
 
-                        Log.d("AppLogs", "Fetched Songs :" + songPlayList.length);
+                        Log.d("AppLogs", "Fetched Songs :" + Song.songPlayList.length);
 
                         CustomAdapter adapter = new CustomAdapter(MainActivity.this, R.layout.custom_listview_layout,
-                                songPlayList);
+                                Song.songPlayList);
                         listView.setAdapter(adapter);
                         listView.setDivider(getDrawable(R.drawable.divider));
                     }
@@ -124,9 +120,9 @@ public class MainActivity extends AppCompatActivity {
                 musicbutton.setTextColor(Color.parseColor("#FF8219"));
                 videobutton.setTextColor(Color.parseColor("#FFFFFF"));
                 // shufflebutton.setVisibility(View.VISIBLE);
-                Log.d("AppLogs", "Fetched Songs :" + songPlayList.length);
+                Log.d("AppLogs", "Fetched Songs :" + Song.songPlayList.length);
                 CustomAdapter adapter = new CustomAdapter(MainActivity.this, R.layout.custom_listview_layout,
-                        songPlayList);
+                        Song.songPlayList);
                 listView.setAdapter(adapter);
                 listView.setDivider(getDrawable(R.drawable.divider));
 
@@ -144,36 +140,36 @@ public class MainActivity extends AppCompatActivity {
                 musicbutton.setTextColor(Color.parseColor("#FFFFFF"));
                 // shufflebutton.setVisibility(View.GONE);
 
-                if (videoPlayList == null) {
+                if (Video.videoPlayList == null) {
                     MediaMetadataRetriever metaRetriver = new MediaMetadataRetriever();
 
                     ArrayList<File> Videos = fetchVideos(Environment.getExternalStorageDirectory());
 
-                    videoPlayList = new Video[Videos.size()];
+                    Video.videoPlayList = new Video[Videos.size()];
 
                     for (int i = 0; i < Videos.size(); i++) {
                         Video temp = new Video();
-                        videoPlayList[i] = temp;
+                        Video.videoPlayList[i] = temp;
                         try {
                             metaRetriver.setDataSource(String.valueOf(Videos.get(i)));
-                            videoPlayList[i].setVideoAlbum(
+                            Video.videoPlayList[i].setVideoAlbum(
                                     metaRetriver.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM));
 
-                            videoPlayList[i].setVideoArtist(
+                            Video.videoPlayList[i].setVideoArtist(
                                     metaRetriver.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST));
 
                         } catch (Exception e) {
-                            videoPlayList[i].setVideoAlbum("Unknown Album");
-                            videoPlayList[i].setVideoArtist("Unknown Artist");
+                            Video.videoPlayList[i].setVideoAlbum("Unknown Album");
+                            Video.videoPlayList[i].setVideoArtist("Unknown Artist");
                         }
-                        videoPlayList[i].setVideoNames(Videos.get(i).getName().replace(".mp3", ""));
+                        Video.videoPlayList[i].setVideoNames(Videos.get(i).getName().replace(".mp3", ""));
                     }
                 }
 
-                Log.d("AppLogs", "Fetched Videos :" + videoPlayList.length);
+                Log.d("AppLogs", "Fetched Videos :" + Video.videoPlayList.length);
 
                 CustomAdapterVideo adapter = new CustomAdapterVideo(MainActivity.this, R.layout.custom_listview_layout,
-                        videoPlayList);
+                        Video.videoPlayList);
                 listView.setAdapter(adapter);
                 listView.setDivider(getDrawable(R.drawable.divider));
 

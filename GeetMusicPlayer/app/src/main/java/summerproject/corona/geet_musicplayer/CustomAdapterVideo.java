@@ -1,5 +1,6 @@
 package summerproject.corona.geet_musicplayer;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -15,20 +16,20 @@ import androidx.annotation.Nullable;
 
 public class CustomAdapterVideo extends ArrayAdapter<Video> {
 
-    private Video[] videoPlayList;
-    private Context context;
+    private final Context context;
 
     public CustomAdapterVideo(@NonNull Context context, int resource, @NonNull Video[] videoPlayList) {
         super(context, resource, videoPlayList);
 
         this.context = context;
-        this.videoPlayList = videoPlayList;
+        Video.videoPlayList = videoPlayList;
     }
 
     public Video getItem(int position) {
-        return videoPlayList[position];
+        return Video.videoPlayList[position];
     }
 
+    @SuppressLint("ViewHolder")
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {

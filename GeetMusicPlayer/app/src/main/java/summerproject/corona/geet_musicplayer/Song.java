@@ -1,6 +1,9 @@
 package summerproject.corona.geet_musicplayer;
 
 public class Song {
+
+    static public Song[] songPlayList;
+
     private String songNames;
     private String songArtist;
     private String songAlbum;

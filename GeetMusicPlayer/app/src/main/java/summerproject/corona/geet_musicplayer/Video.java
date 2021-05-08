@@ -2,6 +2,8 @@ package summerproject.corona.geet_musicplayer;
 
 public class Video {
 
+    public static Video[] videoPlayList;
+
     public Video() {
 
     }

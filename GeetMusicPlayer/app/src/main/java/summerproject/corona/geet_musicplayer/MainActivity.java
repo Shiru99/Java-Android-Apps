@@ -49,9 +49,6 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("AppLogs", "App Started");
 
-        final Intent intent_MusicPlayer = new Intent(this, MusicPlayer.class);
-        final Intent intent_VideoPlayer = new Intent(this, VideoPlayer.class);
-
         musicbutton = findViewById(R.id.musicbutton);
         videobutton = findViewById(R.id.videobutton);
         shufflebutton = findViewById(R.id.shufflebutton);

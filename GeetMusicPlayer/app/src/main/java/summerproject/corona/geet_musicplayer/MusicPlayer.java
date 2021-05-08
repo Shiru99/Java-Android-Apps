@@ -18,7 +18,7 @@ public class MusicPlayer extends AppCompatActivity {
         Log.d("AppLogs", "Entered in Music Player");
         Intent intent = getIntent();
         position = intent.getIntExtra("position", 0);
-
+        Log.d("AppLogs", ""+position);
 
 
     }

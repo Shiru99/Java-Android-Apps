@@ -19,11 +19,11 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="1dp"
-            android:layout_height="28dp"
+            android:layout_width="10dp"
+            android:layout_height="48dp"
             android:layout_weight="1"
             android:contentDescription="@string/justicon"
-            app:srcCompat="@android:drawable/presence_video_away" />
+            app:srcCompat="@drawable/camera" />
 
         <LinearLayout
             android:layout_width="249dp"

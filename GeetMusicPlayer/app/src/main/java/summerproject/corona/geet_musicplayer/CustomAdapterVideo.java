@@ -1,6 +1,8 @@
 package summerproject.corona.geet_musicplayer;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +25,6 @@ public class CustomAdapterVideo extends ArrayAdapter<Video> {
         this.videoPlayList = videoPlayList;
     }
 
-    // @Nullable
-    // @Override
     public Video getItem(int position) {
         return videoPlayList[position];
     }
@@ -38,12 +38,17 @@ public class CustomAdapterVideo extends ArrayAdapter<Video> {
         videoName.setText(getItem(position).getVideoNames());
         TextView videoDescription = convertView.findViewById(R.id.videoDescription);
         videoDescription.setText(getItem(position).getVideoArtist());
-        // Before returning the view, add Click listener
+
+
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "You Clicked on: " + position, Toast.LENGTH_SHORT).show();
+                Log.d("AppLogs", "Playing video : "+getItem(position).getVideoNames());
+                final Intent intent_VideoPlayer = new Intent(context, VideoPlayer.class);
+                intent_VideoPlayer.putExtra("position", position);
+                context.startActivity(intent_VideoPlayer);
             }
+
         });
         return convertView;
     }

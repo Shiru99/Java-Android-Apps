@@ -1,12 +1,13 @@
 package summerproject.corona.geet_musicplayer;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,8 +24,6 @@ public class CustomAdapter extends ArrayAdapter<Song> {
         this.songPlayList = songPlayList;
     }
 
-    // @Nullable
-    // @Override
     public Song getItem(int position) {
         return songPlayList[position];
     }
@@ -38,13 +37,17 @@ public class CustomAdapter extends ArrayAdapter<Song> {
         songName.setText(getItem(position).getSongNames());
         TextView songDescription = convertView.findViewById(R.id.videoDescription);
         songDescription.setText(getItem(position).getSongArtist());
-        // Before returning the view, add Click listener
+
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "You Clicked on: " + position, Toast.LENGTH_SHORT).show();
+                Log.d("AppLogs", "Playing Song : "+getItem(position).getSongNames());
+                final Intent intent_MusicPlayer = new Intent(context, MusicPlayer.class);
+                intent_MusicPlayer.putExtra("position", position);
+                context.startActivity(intent_MusicPlayer);
             }
         });
+
         return convertView;
     }
 }

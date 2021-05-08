@@ -16,7 +16,6 @@ public class CustomAdapter extends ArrayAdapter<Song> {
     private Song[] songPlayList;
     private Context context;
 
-
     public CustomAdapter(@NonNull Context context, int resource, @NonNull Song[] songPlayList) {
         super(context, resource, songPlayList);
 
@@ -24,8 +23,8 @@ public class CustomAdapter extends ArrayAdapter<Song> {
         this.songPlayList = songPlayList;
     }
 
-//    @Nullable
-//    @Override
+    // @Nullable
+    // @Override
     public Song getItem(int position) {
         return songPlayList[position];
     }
@@ -48,6 +47,4 @@ public class CustomAdapter extends ArrayAdapter<Song> {
         });
         return convertView;
     }
-
-
 }

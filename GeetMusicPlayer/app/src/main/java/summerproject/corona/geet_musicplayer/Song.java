@@ -2,7 +2,7 @@ package summerproject.corona.geet_musicplayer;
 
 public class Song {
     private String songNames;
-    private  String songArtist;
+    private String songArtist;
     private String songAlbum;
 
     public Song() {

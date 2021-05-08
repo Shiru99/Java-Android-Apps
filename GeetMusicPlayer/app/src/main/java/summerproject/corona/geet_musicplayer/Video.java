@@ -6,9 +6,8 @@ public class Video {
 
     }
 
-
     private String videoNames;
-    private  String videoArtist;
+    private String videoArtist;
     private String videoAlbum;
 
     public Video(String videoNames, String videoArtist, String videoAlbum) {

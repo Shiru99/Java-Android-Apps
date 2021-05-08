@@ -37,11 +37,10 @@ public class MainActivity extends AppCompatActivity {
     private Button musicbutton;
     private Button videobutton;
     private Button shufflebutton;
-    private ListView listView ;
+    private ListView listView;
 
     private Song[] songPlayList;
     private Video[] videoPlayList;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,19 +73,20 @@ public class MainActivity extends AppCompatActivity {
 
                         for (int i = 0; i < Songs.size(); i++) {
                             Song temp = new Song();
-                            songPlayList[i]=temp;
+                            songPlayList[i] = temp;
                             try {
                                 metaRetriver.setDataSource(String.valueOf(Songs.get(i)));
 
-                                songPlayList[i].setSongAlbum(metaRetriver.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM));
+                                songPlayList[i].setSongAlbum(
+                                        metaRetriver.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM));
 
-                                if(songPlayList[i].getSongAlbum()==null){
+                                if (songPlayList[i].getSongAlbum() == null) {
                                     songPlayList[i].setSongAlbum("Unknown Album");
                                 }
 
-                                songPlayList[i].setSongArtist(metaRetriver
-                                        .extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST));
-                                if(songPlayList[i].getSongArtist()==null){
+                                songPlayList[i].setSongArtist(
+                                        metaRetriver.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST));
+                                if (songPlayList[i].getSongArtist() == null) {
                                     songPlayList[i].setSongArtist("Unknown Artist");
                                 }
 
@@ -96,28 +96,14 @@ public class MainActivity extends AppCompatActivity {
                             }
 
                             songPlayList[i].setSongNames(Songs.get(i).getName().replace(".mp3", ""));
-
-//                            Log.d("AppLogs", "" + songPlayList[i].getSongNames()+" "+songPlayList[i].getSongArtist()+" "+songPlayList[i].getSongAlbum());
                         }
 
                         Log.d("AppLogs", "Fetched Songs :" + songPlayList.length);
 
-                        CustomAdapter adapter = new CustomAdapter(MainActivity.this, R.layout.custom_listview_layout, songPlayList);
+                        CustomAdapter adapter = new CustomAdapter(MainActivity.this, R.layout.custom_listview_layout,
+                                songPlayList);
                         listView.setAdapter(adapter);
                         listView.setDivider(getDrawable(R.drawable.divider));
-//                        listView.addItemDecoration(new DividerItemDecoration(listView.getContext(), DividerItemDecoration.VERTICAL));
-//                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                            @Override
-//                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                                Intent intent = new Intent(MainActivity.this, PlaySong.class);
-//                                String currentSong = listView.getItemAtPosition(position).toString();
-//                                intent.putExtra("songList", mySongs);
-//                                intent.putExtra("currentSong", currentSong);
-//                                intent.putExtra("position", position);
-//                                startActivity(intent);
-//                            }
-//                        });
-
                     }
 
                     @Override
@@ -138,12 +124,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("AppLogs", "Request for Music");
-                // Toast.makeText(MainActivity.this, "All The Best", Toast.LENGTH_SHORT).show();
                 musicbutton.setTextColor(Color.parseColor("#FF8219"));
                 videobutton.setTextColor(Color.parseColor("#FFFFFF"));
-//                shufflebutton.setVisibility(View.VISIBLE);
+                // shufflebutton.setVisibility(View.VISIBLE);
                 Log.d("AppLogs", "Fetched Songs :" + songPlayList.length);
-                CustomAdapter adapter = new CustomAdapter(MainActivity.this, R.layout.custom_listview_layout, songPlayList);
+                CustomAdapter adapter = new CustomAdapter(MainActivity.this, R.layout.custom_listview_layout,
+                        songPlayList);
                 listView.setAdapter(adapter);
                 listView.setDivider(getDrawable(R.drawable.divider));
 
@@ -159,9 +145,9 @@ public class MainActivity extends AppCompatActivity {
                 // Toast.makeText(MainActivity.this, "All The Best", Toast.LENGTH_SHORT).show();
                 videobutton.setTextColor(Color.parseColor("#FF8219"));
                 musicbutton.setTextColor(Color.parseColor("#FFFFFF"));
-//                shufflebutton.setVisibility(View.GONE);
+                // shufflebutton.setVisibility(View.GONE);
 
-                if(videoPlayList==null){
+                if (videoPlayList == null) {
                     MediaMetadataRetriever metaRetriver = new MediaMetadataRetriever();
 
                     ArrayList<File> Videos = fetchVideos(Environment.getExternalStorageDirectory());
@@ -170,13 +156,14 @@ public class MainActivity extends AppCompatActivity {
 
                     for (int i = 0; i < Videos.size(); i++) {
                         Video temp = new Video();
-                        videoPlayList[i]=temp;
+                        videoPlayList[i] = temp;
                         try {
                             metaRetriver.setDataSource(String.valueOf(Videos.get(i)));
-                            videoPlayList[i].setVideoAlbum(metaRetriver.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM));
+                            videoPlayList[i].setVideoAlbum(
+                                    metaRetriver.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM));
 
-                            videoPlayList[i].setVideoArtist(metaRetriver
-                                    .extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST));
+                            videoPlayList[i].setVideoArtist(
+                                    metaRetriver.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST));
 
                         } catch (Exception e) {
                             videoPlayList[i].setVideoAlbum("Unknown Album");
@@ -188,11 +175,10 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.d("AppLogs", "Fetched Videos :" + videoPlayList.length);
 
-                CustomAdapterVideo adapter = new CustomAdapterVideo(MainActivity.this, R.layout.custom_listview_layout, videoPlayList);
+                CustomAdapterVideo adapter = new CustomAdapterVideo(MainActivity.this, R.layout.custom_listview_layout,
+                        videoPlayList);
                 listView.setAdapter(adapter);
                 listView.setDivider(getDrawable(R.drawable.divider));
-
-
 
             }
         });

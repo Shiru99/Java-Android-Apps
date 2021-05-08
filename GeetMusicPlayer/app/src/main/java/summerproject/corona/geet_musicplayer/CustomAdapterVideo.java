@@ -11,13 +11,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-
-
 public class CustomAdapterVideo extends ArrayAdapter<Video> {
 
     private Video[] videoPlayList;
     private Context context;
-
 
     public CustomAdapterVideo(@NonNull Context context, int resource, @NonNull Video[] videoPlayList) {
         super(context, resource, videoPlayList);
@@ -26,8 +23,8 @@ public class CustomAdapterVideo extends ArrayAdapter<Video> {
         this.videoPlayList = videoPlayList;
     }
 
-    //    @Nullable
-//    @Override
+    // @Nullable
+    // @Override
     public Video getItem(int position) {
         return videoPlayList[position];
     }
@@ -50,6 +47,4 @@ public class CustomAdapterVideo extends ArrayAdapter<Video> {
         });
         return convertView;
     }
-
-
 }

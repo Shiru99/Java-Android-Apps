@@ -133,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
                 }).check();
 
         musicbutton.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v) {
@@ -142,11 +143,15 @@ public class MainActivity extends AppCompatActivity {
                 videobutton.setTextColor(Color.parseColor("#FFFFFF"));
 //                shufflebutton.setVisibility(View.VISIBLE);
                 Log.d("AppLogs", "Fetched Songs :" + songPlayList.length);
+                CustomAdapter adapter = new CustomAdapter(MainActivity.this, R.layout.custom_listview_layout, songPlayList);
+                listView.setAdapter(adapter);
+                listView.setDivider(getDrawable(R.drawable.divider));
 
             }
         });
 
         videobutton.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v) {
@@ -182,6 +187,10 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 Log.d("AppLogs", "Fetched Videos :" + videoPlayList.length);
+
+                CustomAdapterVideo adapter = new CustomAdapterVideo(MainActivity.this, R.layout.custom_listview_layout, videoPlayList);
+                listView.setAdapter(adapter);
+                listView.setDivider(getDrawable(R.drawable.divider));
 
 
 

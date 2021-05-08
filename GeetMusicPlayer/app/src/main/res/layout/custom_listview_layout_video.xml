@@ -19,8 +19,8 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="39dp"
+            android:layout_width="1dp"
+            android:layout_height="28dp"
             android:layout_weight="1"
             android:contentDescription="@string/justicon"
             app:srcCompat="@android:drawable/presence_video_away" />

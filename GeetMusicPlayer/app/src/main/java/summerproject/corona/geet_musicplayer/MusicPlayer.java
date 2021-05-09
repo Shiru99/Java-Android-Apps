@@ -24,47 +24,50 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 public class MusicPlayer extends AppCompatActivity {
 
-    private static ImageView albumArt,albumArtBlur;
+    private ImageView albumArt,albumArtBlur;
     private TextView songName,songDescription;
     private MediaPlayer mediaPlayer;
     private ImageButton backward,previous, playpause, next, forward;
-    SeekBar seekBar;
+    private TextView timeSpent,timeRemaining;
+    private SeekBar seekBar;
+    private Thread updateSeek;
 
     int position;
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        updateSeek.interrupt();
         mediaPlayer.stop();
         mediaPlayer.release();
         Log.d("AppLogs","onBackPressed");
     }
 
-    @SuppressLint("WrongConstant")
+    @SuppressLint({"WrongConstant", "SetTextI18n"})
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         androidx.appcompat.app.ActionBar actionBar = getSupportActionBar();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
 
         setContentView(R.layout.activity_music_player);
 
-        Log.d("AppLogs", "Entered in Music Player");
-        Intent intent = getIntent();
-        position = intent.getIntExtra("position", 0);
-
-        setSongDetails(position);
-
-
+        seekBar = findViewById(R.id.seekBar);
         backward = findViewById(R.id.backward);
         previous = findViewById(R.id.previous);
         playpause = findViewById(R.id.playpause);
         next = findViewById(R.id.next);
         forward = findViewById(R.id.forward);
+
+        Log.d("AppLogs", "Entered in Music Player");
+        Intent intent = getIntent();
+        position = intent.getIntExtra("position", 0);
 
 
         Uri uri = Uri.parse(Song.SongFiles.get(position).toString());
@@ -73,13 +76,55 @@ public class MusicPlayer extends AppCompatActivity {
         playpause.setImageResource(R.drawable.pause);
         Log.d("AppLogs", "Song Started Playing");
 
+        // Song Details Display
+        setSongDetails(position);
 
         // TODO : SeekBar
-
-        seekBar = findViewById(R.id.seekBar);
         seekBar.setMax(mediaPlayer.getDuration());
-        String time = timeFormat(mediaPlayer.getDuration());
-        Log.d("AppLogs", time);
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                String time = timeFormat(mediaPlayer.getCurrentPosition());
+                timeSpent.setText(time);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                String time = timeFormat(mediaPlayer.getCurrentPosition());
+                timeSpent.setText(time);
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                mediaPlayer.seekTo(seekBar.getProgress());
+//                String time = timeFormat(mediaPlayer.getCurrentPosition());
+//                timeSpent.setText(time);
+            }
+        });
+
+        updateSeek = new Thread(){
+            @Override
+            public void run() {
+
+                String time = timeFormat(mediaPlayer.getCurrentPosition());
+                timeSpent.setText(time);
+
+                int currentPosition = 0;
+                try{
+                    while(currentPosition<mediaPlayer.getDuration()){
+                        currentPosition = mediaPlayer.getCurrentPosition();
+                        seekBar.setProgress(currentPosition);
+                        sleep(500);
+                    }
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        };
+        updateSeek.start();
+
 
 
 
@@ -204,16 +249,17 @@ public class MusicPlayer extends AppCompatActivity {
 
         quotient = remainder/(60*1000);
         remainder = remainder%(60*1000);
-        if(quotient>0){
-            String temp = (quotient < 10 ? "0" : "") + quotient + ":";
-            time = time+temp;
-        }
+
+        String temp = (quotient < 10 ? "0" : "") + quotient + ":";
+        time = time+temp;
+
         quotient = remainder/(1000);
-        String temp = (quotient < 10 ? "0" : "") + quotient;
+        temp = (quotient < 10 ? "0" : "") + quotient;
         time = time+temp;
         return  time;
     }
 
+    @SuppressLint("SetTextI18n")
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     public void setSongDetails(int position){
         byte [] AlbumArt = Song.songPlayList[position].getAlbumArt();
@@ -255,11 +301,13 @@ public class MusicPlayer extends AppCompatActivity {
         songName.setText(Song.songPlayList[position].getSongNames());
         songDescription.setText(Song.songPlayList[position].getSongArtist());
 
+        timeSpent = findViewById(R.id.timeSpent);
+        timeRemaining = findViewById(R.id.timeRemaining);
+
+        timeSpent.setText("00:00");
+        String time = timeFormat(mediaPlayer.getDuration());
+        timeRemaining.setText(time);
+
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        mediaPlayer.stop();
-//        playpause.setImageResource(R.drawable.play);
-//    }
 }

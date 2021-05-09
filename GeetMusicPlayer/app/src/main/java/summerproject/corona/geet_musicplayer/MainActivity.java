@@ -61,15 +61,15 @@ public class MainActivity extends AppCompatActivity {
 
                         MediaMetadataRetriever metaRetriver = new MediaMetadataRetriever();
 
-                        ArrayList<File> Songs = fetchMusic(Environment.getExternalStorageDirectory());
+                        Song.SongFiles = fetchMusic(Environment.getExternalStorageDirectory());
 
-                        Song.songPlayList = new Song[Songs.size()];
+                        Song.songPlayList = new Song[Song.SongFiles.size()];
 
-                        for (int i = 0; i < Songs.size(); i++) {
+                        for (int i = 0; i < Song.SongFiles.size(); i++) {
                             Song temp = new Song();
                             Song.songPlayList[i] = temp;
                             try {
-                                metaRetriver.setDataSource(String.valueOf(Songs.get(i)));
+                                metaRetriver.setDataSource(String.valueOf(Song.SongFiles.get(i)));
 
                                 Song.songPlayList[i].setAlbumArt(metaRetriver.getEmbeddedPicture());
 
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                                 Song.songPlayList[i].setSongArtist("Unknown Artist");
                             }
 
-                            Song.songPlayList[i].setSongNames(Songs.get(i).getName().replace(".mp3", ""));
+                            Song.songPlayList[i].setSongNames(Song.SongFiles.get(i).getName().replace(".mp3", ""));
                         }
 
                         Log.d("AppLogs", "Fetched Songs :" + Song.songPlayList.length);

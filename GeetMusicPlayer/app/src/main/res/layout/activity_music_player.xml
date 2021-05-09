@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_200"
+    android:id="@+id/toolbar"
     tools:context=".MusicPlayer">
 
     <ImageView
@@ -120,7 +121,7 @@
         app:layout_constraintTop_toBottomOf="@+id/seekBar">
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/backward"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="20dp"
@@ -129,7 +130,7 @@
             app:srcCompat="@drawable/backward" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/previous"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="20dp"
@@ -138,7 +139,7 @@
             app:srcCompat="@drawable/last" />
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/playpause"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="20dp"
@@ -147,7 +148,7 @@
             app:srcCompat="@drawable/play" />
 
         <ImageButton
-            android:id="@+id/imageButton4"
+            android:id="@+id/next"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="20dp"
@@ -156,7 +157,7 @@
             app:srcCompat="@drawable/next" />
 
         <ImageButton
-            android:id="@+id/imageButton5"
+            android:id="@+id/forward"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="20dp"

@@ -13,9 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GeetMusicPlayer">
         <activity
+            android:label="Geet - Video Player"
             android:name=".VideoPlayer"
             android:parentActivityName=".MainActivity" />
         <activity
+            android:label="Geet - Music Player"
             android:name=".MusicPlayer"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">

@@ -1,8 +1,12 @@
 package summerproject.corona.geet_musicplayer;
 
+import java.io.File;
+import java.util.ArrayList;
+
 public class Song {
 
     static public Song[] songPlayList;
+    static public ArrayList<File> SongFiles;
 
     private String songNames;
     private String songArtist;

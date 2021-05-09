@@ -79,7 +79,7 @@ public class MusicPlayer extends AppCompatActivity {
         // Song Details Display
         setSongDetails(position);
 
-        // TODO : SeekBar
+        // SeekBar
         seekBar.setMax(mediaPlayer.getDuration());
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -115,7 +115,7 @@ public class MusicPlayer extends AppCompatActivity {
                     while(currentPosition<mediaPlayer.getDuration()){
                         currentPosition = mediaPlayer.getCurrentPosition();
                         seekBar.setProgress(currentPosition);
-                        sleep(500);
+                        sleep(200);
                     }
                 }
                 catch (Exception e){
@@ -142,6 +142,9 @@ public class MusicPlayer extends AppCompatActivity {
                     mediaPlayer.seekTo(0);
                 }
 
+                int currentPosition = mediaPlayer.getCurrentPosition();
+                seekBar.setProgress(currentPosition);
+
                 time = timeFormat(mediaPlayer.getCurrentPosition());
                 Log.d("AppLogs", time);
             }
@@ -164,6 +167,9 @@ public class MusicPlayer extends AppCompatActivity {
                 playpause.setImageResource(R.drawable.pause);
                 seekBar.setMax(mediaPlayer.getDuration());
                 setSongDetails(position);
+
+                int currentPosition = mediaPlayer.getCurrentPosition();
+                seekBar.setProgress(currentPosition);
 
                 String time = timeFormat(mediaPlayer.getDuration());
                 Log.d("AppLogs", time);
@@ -205,6 +211,8 @@ public class MusicPlayer extends AppCompatActivity {
                 playpause.setImageResource(R.drawable.pause);
                 seekBar.setMax(mediaPlayer.getDuration());
                 setSongDetails(position);
+                int currentPosition = mediaPlayer.getCurrentPosition();
+                seekBar.setProgress(currentPosition);
 
                 String time = timeFormat(mediaPlayer.getDuration());
                 Log.d("AppLogs", time);
@@ -224,6 +232,8 @@ public class MusicPlayer extends AppCompatActivity {
                 else{
                     mediaPlayer.seekTo(mediaPlayer.getDuration());
                 }
+                int currentPosition = mediaPlayer.getCurrentPosition();
+                seekBar.setProgress(currentPosition);
 
                 time = timeFormat(mediaPlayer.getCurrentPosition());
                 Log.d("AppLogs", time);
@@ -290,7 +300,8 @@ public class MusicPlayer extends AppCompatActivity {
             albumArt.setImageResource(R.drawable.music_icon);
 
             albumArtBlur = findViewById(R.id.albumArtBlur);
-            albumArtBlur.setImageResource(R.drawable.music_icon);
+            albumArtBlur.setImageResource(R.color.dark_200);
+
         }
 
         songName = findViewById(R.id.songName);

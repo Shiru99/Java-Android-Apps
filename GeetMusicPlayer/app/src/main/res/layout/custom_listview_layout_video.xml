@@ -19,10 +19,11 @@
 
         <ImageView
             android:id="@+id/albumArtBlur"
-            android:layout_width="10dp"
-            android:layout_height="48dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/justicon"
+            android:padding="10dp"
             app:srcCompat="@drawable/camera" />
 
         <LinearLayout
@@ -43,7 +44,7 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:singleLine="true"
-                android:text="Video Name"
+                android:text="@string/song_name"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -57,7 +58,7 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:singleLine="true"
-                android:text="Video Description"
+                android:text="@string/song_description"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
         </LinearLayout>
@@ -73,5 +74,7 @@
 
 
     </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

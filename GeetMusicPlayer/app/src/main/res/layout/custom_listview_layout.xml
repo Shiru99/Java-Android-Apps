@@ -23,7 +23,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/justicon"
-            app:srcCompat="@mipmap/ic_launcher_round" />
+            android:padding="10dp"
+            app:srcCompat="@drawable/music" />
 
         <LinearLayout
             android:layout_width="249dp"

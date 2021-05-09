@@ -7,4 +7,6 @@
     <string name="song_description">Song Description</string>
     <string name="songsettings">Song Settings</string>
     <string name="justicon">Just Icon</string>
+    <string name="video_description">Video Description</string>
+    <string name="video_name">Video Name</string>
 </resources>

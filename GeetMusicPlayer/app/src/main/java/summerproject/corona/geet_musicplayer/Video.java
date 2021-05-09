@@ -1,8 +1,12 @@
 package summerproject.corona.geet_musicplayer;
 
+import java.io.File;
+import java.util.ArrayList;
+
 public class Video {
 
     public static Video[] videoPlayList;
+    static public ArrayList<File> videoFiles;
 
     public Video() {
 

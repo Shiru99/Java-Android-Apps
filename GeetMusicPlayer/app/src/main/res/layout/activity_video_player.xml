@@ -4,6 +4,156 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark_200"
+    android:screenOrientation="landscape"
     tools:context=".VideoPlayer">
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="2dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/timeSpent"
+        app:layout_constraintDimensionRatio="w,15:10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <SurfaceView
+            android:id="@+id/surfaceView2"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:scaleType="fitXY"
+            app:layout_constraintDimensionRatio="16:9" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/timeSpent"
+        android:layout_width="52dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="4dp"
+        android:gravity="center"
+        android:rotation="90"
+        android:text="1:02:22"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/timeRemaining"
+        app:layout_constraintEnd_toStartOf="@+id/seekBar"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/timeRemaining"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="330dp"
+        android:layout_height="15dp"
+        android:outlineAmbientShadowColor="@color/orange"
+        app:layout_constraintBottom_toBottomOf="@+id/timeSpent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/timeRemaining"
+        android:layout_width="55dp"
+        android:layout_height="58dp"
+        android:gravity="center"
+        android:rotation="90"
+        android:text="2:32:22"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/seekBar"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="416dp"
+        android:layout_height="62dp"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeRemaining">
+
+        <ImageButton
+            android:id="@+id/backward"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/backward" />
+
+        <ImageButton
+            android:id="@+id/previous"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+
+            app:srcCompat="@drawable/last" />
+
+        <ImageButton
+            android:id="@+id/playpause"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/play" />
+
+        <ImageButton
+            android:id="@+id/next"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+
+            app:srcCompat="@drawable/next" />
+
+        <ImageButton
+            android:id="@+id/forward"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+
+            app:srcCompat="@drawable/forward" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/videoName"
+        android:layout_width="232dp"
+        android:layout_height="44dp"
+        android:layout_margin="4dp"
+        android:ellipsize="marquee"
+        android:fadingEdge="horizontal"
+        android:gravity="center"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:text="@string/video_name"
+        android:textColor="#FFFFFF"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar"
+        app:layout_constraintEnd_toStartOf="@+id/timeRemaining"
+        app:layout_constraintStart_toEndOf="@+id/timeSpent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

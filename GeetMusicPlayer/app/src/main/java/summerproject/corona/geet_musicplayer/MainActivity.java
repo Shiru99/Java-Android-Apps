@@ -149,15 +149,15 @@ public class MainActivity extends AppCompatActivity {
                 if (Video.videoPlayList == null) {
                     MediaMetadataRetriever metaRetriver = new MediaMetadataRetriever();
 
-                    ArrayList<File> Videos = fetchVideos(Environment.getExternalStorageDirectory());
+                    Video.videoFiles = fetchVideos(Environment.getExternalStorageDirectory());
 
-                    Video.videoPlayList = new Video[Videos.size()];
+                    Video.videoPlayList = new Video[Video.videoFiles.size()];
 
-                    for (int i = 0; i < Videos.size(); i++) {
+                    for (int i = 0; i < Video.videoFiles.size(); i++) {
                         Video temp = new Video();
                         Video.videoPlayList[i] = temp;
                         try {
-                            metaRetriver.setDataSource(String.valueOf(Videos.get(i)));
+                            metaRetriver.setDataSource(String.valueOf(Video.videoFiles.get(i)));
                             Video.videoPlayList[i].setVideoAlbum(
                                     metaRetriver.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM));
 
@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
                             Video.videoPlayList[i].setVideoAlbum("Unknown Album");
                             Video.videoPlayList[i].setVideoArtist("Unknown Artist");
                         }
-                        Video.videoPlayList[i].setVideoNames(Videos.get(i).getName().replace(".mp3", ""));
+                        Video.videoPlayList[i].setVideoNames(Video.videoFiles.get(i).getName().replace(".mp3", ""));
                     }
                 }
 

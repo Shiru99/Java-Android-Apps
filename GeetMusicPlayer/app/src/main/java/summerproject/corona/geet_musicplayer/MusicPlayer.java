@@ -98,8 +98,8 @@ public class MusicPlayer extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 mediaPlayer.seekTo(seekBar.getProgress());
-//                String time = timeFormat(mediaPlayer.getCurrentPosition());
-//                timeSpent.setText(time);
+                String time = timeFormat(mediaPlayer.getCurrentPosition());
+                timeSpent.setText(time);
             }
         });
 
@@ -115,7 +115,7 @@ public class MusicPlayer extends AppCompatActivity {
                     while(currentPosition<mediaPlayer.getDuration()){
                         currentPosition = mediaPlayer.getCurrentPosition();
                         seekBar.setProgress(currentPosition);
-                        sleep(200);
+                        sleep(100);
                     }
                 }
                 catch (Exception e){
@@ -315,6 +315,7 @@ public class MusicPlayer extends AppCompatActivity {
         timeSpent = findViewById(R.id.timeSpent);
         timeRemaining = findViewById(R.id.timeRemaining);
 
+        mediaPlayer.setLooping(true);
         timeSpent.setText("00:00");
         String time = timeFormat(mediaPlayer.getDuration());
         timeRemaining.setText(time);

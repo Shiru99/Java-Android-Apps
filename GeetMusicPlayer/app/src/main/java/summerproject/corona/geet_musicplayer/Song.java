@@ -7,9 +7,16 @@ public class Song {
     private String songNames;
     private String songArtist;
     private String songAlbum;
+    private  byte [] AlbumArt;
 
-    public Song() {
+    public Song() { }
 
+    public byte[] getAlbumArt() {
+        return AlbumArt;
+    }
+
+    public void setAlbumArt(byte[] AlbumArt) {
+        this.AlbumArt = AlbumArt;
     }
 
     public Song(String songNames, String songArtist, String songAlbum) {

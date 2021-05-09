@@ -71,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
                             try {
                                 metaRetriver.setDataSource(String.valueOf(Songs.get(i)));
 
+                                Song.songPlayList[i].setAlbumArt(metaRetriver.getEmbeddedPicture());
+
                                 Song.songPlayList[i].setSongAlbum(
                                         metaRetriver.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM));
 
